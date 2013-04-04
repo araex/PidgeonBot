@@ -7,5 +7,5 @@
 local TRIGGER='":!echo"|":!2ndecho"';
 
 pidgeonbot_module_echo(){
-	irc_cmd_msg "${REPLYTO}" "$MSG";
+	irc_cmd_msg "${2}" ":${3}";
 }

@@ -19,3 +19,16 @@ irc_msg_interpret(){
             ;;
     esac
 }
+ modules/echo
+            pidgeonbot_module_echo ${1} ${2} ${3}
+            ;;
+
+        ":!echo"|":!2ndecho" )
+            . modules/echo~
+            pidgeonbot_module_echo~ ${1} ${2} ${3}
+            ;;
+
+        *)
+            ;;
+    esac
+}

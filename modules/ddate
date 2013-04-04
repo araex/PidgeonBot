@@ -7,5 +7,5 @@
 local TRIGGER='":!ddate"';
 
 pidgeonbot_module_ddate(){
-	irc_cmd_msg "${REPLYTO}" "$(ddate)";
+	irc_cmd_msg "${2}" ":$(ddate)";
 }
