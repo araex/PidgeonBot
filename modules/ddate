@@ -10,7 +10,7 @@
 
 # define keywords upon which the module should be invoked
 local TRIGGER='":!ddate"|":!discordian"';	# use | to separate multiple keywords
-#			  ^						   ^	# strong quoting required! 
+#             ^                        ^	# strong quoting required! 
 # local TRIGGER='(a|b)*';					# regex is possible as well
 
 # function pidgeonbot_modul_${FILENAME}
