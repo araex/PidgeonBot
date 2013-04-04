@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# this files gets generated during runtime
+
+irc_msg_interpret(){
+    case "$MSG" in
+
+        ":!ddate" )
+            . modules/ddate
+            pidgeonbot_module_ddate
+            ;;
+
+        ":!echo"|":!2ndecho" )
+            . modules/echo
+            pidgeonbot_module_echo
+            ;;
+
+        *)
+            ;;
+    esac
+}

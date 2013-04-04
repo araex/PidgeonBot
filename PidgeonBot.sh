@@ -3,7 +3,7 @@
 ## PidgeonBot.sh
 ## Core functionality for networking and initializing module loader
 
-# initialize vars, connection and redirect stream 3 to /dev/tcp/${SERVER}/${PORT}
+# initialize vars, modules, connection and redirect stream 3 to /dev/tcp/${SERVER}/${PORT}
 _init()
 {
     NICK=${NICK:-"ThePidgeonBot"};
@@ -16,6 +16,7 @@ _init()
     BASETIME=$(date +%s%N);
 
     IFS="${IFS}"$(echo -ne "\r");
+    sh ModuleWatcher.sh &;
 
     exec 3>/dev/tcp/${SERVER}/${PORT} && exec 0<&3
 }
@@ -238,7 +239,7 @@ main()
 {
     irc_cmd_register;
     irc_initial_join;
-    . PidgeonParser
+    . IrcParser
 
     while read line
     do

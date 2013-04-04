@@ -1,0 +1,33 @@
+#!/bin/bash
+
+## InterpreterBuilder
+
+# Builds Interpreter based on modules in /modules/
+
+
+exec 5<> Interpreter
+
+echo '#!/bin/bash' >&5
+echo >&5
+echo '# this files gets generated during runtime' >&5
+echo >&5
+echo 'irc_msg_interpret(){' >&5
+echo '    case "$MSG" in' >&5
+echo >&5
+
+for f in $(ls modules)
+do
+	TRIGGERS=$(cat modules/${f} | grep "local TRIGGER=" | cut -c 16- | sed "s/...$//")
+	echo "        ${TRIGGERS} )" >&5
+	echo "            . modules/${f}" >&5
+	echo "            pidgeonbot_module_${f}" >&5
+	echo "            ;;" >&5
+	echo >&5
+done
+echo '        *)' >&5
+echo '            ;;' >&5
+echo '    esac' >&5
+echo '}' >&5
+
+exec 5>&-
+

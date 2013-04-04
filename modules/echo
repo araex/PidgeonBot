@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # PidgeonBot module
-# returns message back to sender
+# send message back to sender
 
 # defines the keywords in chat upon which the module should be invoked
 local TRIGGER='":!echo"|":!2ndecho"';

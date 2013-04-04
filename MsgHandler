@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## MsgHandler.sh
+## MsgHandler
 
 # Callback on receving a PRIVMSG
 
@@ -24,32 +24,8 @@ irc_msg_callback()
     esac
 
     # commands
-    case "$3" in
-        ":!feed" )
-            util_generate_gurr;
-            local MSG=":OMNOMNOM ${GURR}";
-            irc_cmd_msg "${REPLYTO}" "$MSG";
-            ;;
-        ":!polly" )
-            local MSG=':POLLY WILL N CRACKER. *KRAHHH*';
-            irc_cmd_msg "${REPLYTO}" "$MSG";
-            ;;
-        ":!ddate" )
-            . modules/ddate
-            pidgeonbot_module_ddate
-            ;;
-        *g[u]*r[r]* )
-            util_generate_gurr;
-            local MSG=":${GURR}?";
-            irc_cmd_msg "${REPLYTO}" "$MSG";
-            ;;
-        ":!echo"|":!2ndecho" )
-            . modules/echo
-            pidgeonbot_module_echo ;
-            ;;
-        *)
-            ;;
-    esac
+    .  Interpreter
+    irc_msg_interpret() ;
 
 	return;
     
