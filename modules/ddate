@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# PidgeonBot module
+# returns message back to sender
+local TRIGGER='":!ddate"';
+
+pidgeonbot_module_ddate(){
+	irc_cmd_msg "${REPLYTO}" "$(ddate)";
+}

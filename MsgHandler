@@ -1,0 +1,74 @@
+#!/bin/bash
+
+## MsgHandler.sh
+
+# Callback on receving a PRIVMSG
+
+irc_msg_callback()
+{
+    local FROM="${1}";
+    local TO="${2}";
+    local MSG="${3}";
+
+    echo "-Msg- ${FROM}/${TO} ${MSG}";
+
+    # identify if msg sent in private or channel
+    local SCOPE="";
+    case "$2" in
+        "$NICK" )
+            SCOPE="PRIVATE";
+            ;;
+        *)
+            SCOPE="PUBLIC";
+            ;;
+    esac
+
+    # commands
+    case "$3" in
+        ":!feed" )
+            util_generate_gurr;
+            local MSG=":OMNOMNOM ${GURR}";
+            irc_cmd_msg "${REPLYTO}" "$MSG";
+            ;;
+        ":!polly" )
+            local MSG=':POLLY WILL N CRACKER. *KRAHHH*';
+            irc_cmd_msg "${REPLYTO}" "$MSG";
+            ;;
+        ":!ddate" )
+            . modules/ddate
+            pidgeonbot_module_ddate
+            ;;
+        *g[u]*r[r]* )
+            util_generate_gurr;
+            local MSG=":${GURR}?";
+            irc_cmd_msg "${REPLYTO}" "$MSG";
+            ;;
+        ":!echo"|":!2ndecho" )
+            . modules/echo
+            pidgeonbot_module_echo ;
+            ;;
+        *)
+            ;;
+    esac
+
+	return;
+    
+}
+
+irc_handle_message()
+{
+    local FULLMSG="$@";
+    oldIFS="${IFS}";
+    IFS=":!${IFS}";
+    set $@;
+    local FROM=$2;
+    local TO=$5;
+    IFS="${oldIFS}";
+    set ${FULLMSG};
+    shift ; shift ; shift;
+    local MSG="$@";
+    IFS="${oldIFS}";
+    irc_msg_callback "${FROM}" "${TO}" "${MSG}";
+
+    return 0;
+}
