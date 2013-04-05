@@ -2,18 +2,16 @@
 
 # PidgeonBot module ddate
 
-# the function pidgeonbot_modul_${FILENAME} will be called when invoked by keyword ${TRIGGER} in chat (public and private, see ${SCOPE)}
+# Interpreter will call function pidgeonbot_module_${FILENAME} when ${TRIGGER} is used in chat
 # ${1}		FROM	caller
-# ${2}		TO		channel name or botname respectivly
-# ${3}		MSG		message sent
-# ${4}		SCOPE	where the keyword was triggered from, equals "PRIVATE" or "PUBLIC"
+# ${2}		TO	channel name or botname respectivly
+# ${3}		MSG	message sent
+# ${4}		REPLYTO	
 
 # define keywords upon which the module should be invoked
-local TRIGGER='":!ddate"|":!discordian"';	# use | to separate multiple keywords
-#             ^                        ^	# strong quoting required! 
-# local TRIGGER='(a|b)*';					# regex is possible as well
+TRIGGER='":!ddate"|":!discordian"'; #surround in hard quotes
 
-# function pidgeonbot_modul_${FILENAME}
+# function pidgeonbot_module_${FILENAME}
 pidgeonbot_module_ddate(){
-	irc_cmd_msg "${2}" ":$(ddate)";
+	irc_cmd_msg "${4}" ":$(ddate)";
 }

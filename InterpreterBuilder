@@ -4,7 +4,7 @@
 
 # Builds Interpreter based on modules in /modules/
 
-
+$(rm Interpreter)
 exec 5<> Interpreter
 
 echo '#!/bin/bash' >&5
@@ -15,12 +15,15 @@ echo 'irc_msg_interpret(){' >&5
 echo '    case "$3" in' >&5
 echo >&5
 
-for f in $(ls modules)
+for f in $(ls modules | grep -v "~")
 do
-	TRIGGERS=$(cat modules/${f} | grep "local TRIGGER=" | cut -c 16- | sed "s/..$//")
-	echo "        ${TRIGGERS} )" >&5
+	. modules/${f}
+	if [ -z "${TRIGGER}" ]; then
+		continue
+	fi
+	echo "        ${TRIGGER} )" >&5
 	echo "            . modules/${f}" >&5
-	echo "            pidgeonbot_module_${f} "'${1} ${2} ${3}' >&5
+	echo "            pidgeonbot_module_${f} "'${1} ${2} ${3} ${4}' >&5
 	echo "            ;;" >&5
 	echo >&5
 done

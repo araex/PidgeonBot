@@ -5,14 +5,14 @@
 irc_msg_interpret(){
     case "$3" in
 
-        ":!ddate" )
+        ":!ddate"|":!discordian" )
             . modules/ddate
-            pidgeonbot_module_ddate ${1} ${2} ${3}
+            pidgeonbot_module_ddate ${1} ${2} ${3} ${4}
             ;;
 
-        ":!echo"|":!2ndecho" )
-            . modules/echo
-            pidgeonbot_module_echo ${1} ${2} ${3}
+        *g[u]*r[r]* )
+            . modules/gurr
+            pidgeonbot_module_gurr ${1} ${2} ${3} ${4}
             ;;
 
         *)

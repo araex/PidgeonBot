@@ -9,19 +9,19 @@ irc_msg_callback()
     echo "-Msg- ${1}/${2} ${3}";
 
     # identify if msg sent in private or channel
-    local SCOPE="";
+    local REPLYTO="";
     case "$2" in
         "$NICK" )
-            SCOPE="PRIVATE";
+            REPLYTO="${1}";
             ;;
         *)
-            SCOPE="PUBLIC";
+            REPLYTO="${2}";
             ;;
     esac
 
     # commands
     . Interpreter
-    irc_msg_interpret ${1} ${2} ${3};
+    irc_msg_interpret ${1} ${2} ${3} ${REPLYTO};
 
 	return;
     
