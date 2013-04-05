@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# PidgeonBot module usage
+
+TRIGGER='":!usage"';
+
+pidgeonbot_module_usage(){
+	irc_cmd_msg "${4}" ":Known commands: !info, !modinfo, !ddate, !polly, !usage";
+}

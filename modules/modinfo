@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# PidgeonBot module modinfo
+
+TRIGGER='":!modinfo"';
+
+pidgeonbot_module_modinfo(){
+	irc_cmd_msg "${4}" ":$(util_generate_gurr) Currently loaded modules: $(ls modules/ | grep -v "~" | awk 1 ORS=', ')";
+}

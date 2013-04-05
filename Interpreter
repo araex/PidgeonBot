@@ -10,9 +10,34 @@ irc_msg_interpret(){
             pidgeonbot_module_ddate ${1} ${2} ${3} ${4}
             ;;
 
+        ":!feed" )
+            . modules/feed
+            pidgeonbot_module_feed ${1} ${2} ${3} ${4}
+            ;;
+
         *g[u]*r[r]* )
             . modules/gurr
             pidgeonbot_module_gurr ${1} ${2} ${3} ${4}
+            ;;
+
+        ":!info" )
+            . modules/info
+            pidgeonbot_module_info ${1} ${2} ${3} ${4}
+            ;;
+
+        ":!modinfo" )
+            . modules/modinfo
+            pidgeonbot_module_modinfo ${1} ${2} ${3} ${4}
+            ;;
+
+        ":!polly" )
+            . modules/polly
+            pidgeonbot_module_polly ${1} ${2} ${3} ${4}
+            ;;
+
+        ":!usage" )
+            . modules/usage
+            pidgeonbot_module_usage ${1} ${2} ${3} ${4}
             ;;
 
         *)

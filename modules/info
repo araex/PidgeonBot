@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# PidgeonBot module info
+
+TRIGGER='":!info"';
+
+pidgeonbot_module_info(){
+	irc_cmd_msg "${4}" ":$(util_generate_gurr) I am PidgeonBot v0.2, a nonsense modular irc bot written in pure bash. Learn more about my usage by typing !usage.";
+}

@@ -241,7 +241,6 @@ main()
     irc_cmd_register;
     irc_initial_join;
     . IrcParser
-    trap "kill 0" SIGINT SIGTERM EXIT
     while read line
     do
         irc_parse "${line}";
