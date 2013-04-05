@@ -10,10 +10,7 @@ Usage:
 - start PidgeonBot.sh
 - config is done via __init() function in PidgeonBot.sh
 - changes to all components and modules (except PidgeonBot.sh) can be made during runtime
-- just add new module files to modules/ (see example ddate), the bot will automatically add everything to make it work
-
-Known Bugs:
-- ModuleWatcher.sh does not terminate with PidgeonBot.sh
+- just add new module files to modules/ (see examples), the bot will automatically add everything to make it work
 
 License:
 "THE BEER-WARE LICENSE" (based on phk's Revision 42):
