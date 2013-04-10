@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# PidgeonBot module slap
+
+# ${1}		FROM	caller
+# ${2}		TO	channel name or botname respectivly
+# ${3}		MSG	message sent
+# ${4}		REPLYTO	
+
+# define keywords upon which the module should be invoked
+TRIGGER='":!hit"|":!slap"'; #surround in hard quotes
+
+# function pidgeonbot_module_${FILENAME}
+pidgeonbot_module_slap(){
+	MSG="$(util_generate_gurr) ouch $(util_generate_gurr) $(util_generate_gurr)";
+	irc_cmd_msg "${4}" ":$MSG";
+}

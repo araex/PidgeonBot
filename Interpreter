@@ -35,6 +35,11 @@ irc_msg_interpret(){
             pidgeonbot_module_polly ${1} ${2} ${3} ${4}
             ;;
 
+        ":!hit"|":!slap" )
+            . modules/slap
+            pidgeonbot_module_slap ${1} ${2} ${3} ${4}
+            ;;
+
         ":!usage" )
             . modules/usage
             pidgeonbot_module_usage ${1} ${2} ${3} ${4}
