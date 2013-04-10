@@ -45,6 +45,15 @@ irc_handle_message()
     return 0;
 }
 
+# Callback when somebody joins a channel
+
+irc_join_callback()
+{
+    local JOINEE=$1;
+    local CHANNEL=$2;
+    echo "-Join- ${JOINEE} joined ${CHANNEL} -end-";
+}
+
 util_generate_gurr(){
     local countU=$(( 1 + $(( $RANDOM % 5 ))));
     local countR=$(( 2 + $(( $RANDOM % 3 ))));

@@ -16,6 +16,7 @@ irc_parse()
 	    irc_handle_message "${ORIG}";
 	    ;;
 	JOIN)
+	    . MsgHandler
 	    irc_handle_join "${ORIG}";
 	    ;;
 	KICK) 

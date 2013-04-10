@@ -40,30 +40,6 @@ irc_notice_callback()
     }
 }
 
-
-
-
-
-# Callback when somebody joins a channel
-
-irc_join_callback()
-{
-    local JOINEE=$1;
-    local CHANNEL=$2;
-    echo "-Join- ${JOINEE} joined ${CHANNEL} -end-";
-    local MSG=":${JOINEE}";
-
-    local repeat=$(( 3 + $(( $RANDOM % 5 ))));
-    local i=0;
-    for (( i=0 ; $i<$repeat ; i++ ))
-    do
-      MSG="${MSG} ${JOINEE}";
-    done
-    MSG="${MSG} !!!!!!!!!!!!!!!!!!!!!!!!!!!";
-    [ "${JOINEE}" != "${NICK}" ] && irc_cmd_msg ${CHANNEL} "${MSG}";
-}
-
-
 # Callback when you/sombody get/s kicked
 
 irc_kick_callback()
